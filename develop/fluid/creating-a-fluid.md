@@ -11,4 +11,4 @@ Here we'll cover creation of a custom fluid. If you plan to create several fluid
 
 Vanilla fluids extend `net.minecraft.fluid.FlowableFluid`, and so shall we.
 
-@[code transcludeWith=:::1](@/reference/latest/src/main/java/com/example/docs/block/entity/custom/CounterBlockEntity.java)
+@[code transcludeWith=:::1](@/reference/latest/src/main/java/com/example/docs/fluid/custom/TutorialFluid.java)
