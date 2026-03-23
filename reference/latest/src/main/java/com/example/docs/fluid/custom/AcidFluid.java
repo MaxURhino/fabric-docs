@@ -19,7 +19,7 @@ import net.minecraft.world.level.material.FluidState;
 import org.jspecify.annotations.Nullable;
 import net.minecraft.util.RandomSource;
 
-public abstract class TutorialFluid extends FlowingFluid {
+public abstract class AcidFluid extends FlowingFluid {
 	 	@Override
     public void animateTick(Level world, BlockPos pos, FluidState state, RandomSource random) {
         if (!state.isStill() && !(Boolean)state.get(FALLING)) {
