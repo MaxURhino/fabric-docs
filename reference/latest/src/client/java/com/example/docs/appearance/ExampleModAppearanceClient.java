@@ -9,8 +9,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
+import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 
 import com.example.docs.ExampleMod;
+import com.example.docs.fluid.ModFluids;
 
 public class ExampleModAppearanceClient implements ClientModInitializer {
 	@Override
@@ -35,5 +38,18 @@ public class ExampleModAppearanceClient implements ClientModInitializer {
 		// :::block_render_layer_map
 		BlockRenderLayerMap.putBlock(ExampleModAppearance.WAXCAP_BLOCK, ChunkSectionLayer.CUTOUT);
 		// :::block_render_layer_map
+
+		// :::fluid_texture
+		FluidRenderHandlerRegistry.INSTANCE.register(
+				ModFluids.ACID_STILL,
+				ModFluids.ACID_FLOWING,
+				new SimpleFluidRenderHandler(
+						// Source texture
+						Identifier.tryParse("minecraft:block/water_still"),
+						// Flowing texture
+						Identifier.tryParse("minecraft:block/water_flow")
+				)
+		)
+		// :::fluid_texture
 	}
 }
