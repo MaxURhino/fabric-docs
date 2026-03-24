@@ -137,6 +137,16 @@ export default [
     ],
   },
   {
+    text: "develop.fluid",
+    collapsed: true,
+    items: [
+      {
+        text: "develop.fluid.creating_a_fluid",
+        link: "/develop/fluid/creating-a-fluid"
+      }
+    ]
+  },
+  {
     text: "develop.entities",
     collapsed: true,
     items: [
