@@ -21,3 +21,9 @@ Then you would need to add the source and the flowing fluid classes:
 Next you would need to create a class, called `ModFluids`, that would register all the fluids:
 
 @[code transcludeWith=:::1](@/reference/latest/src/main/java/com/example/docs/fluid/ModFluids.java)
+
+Now, go back to the `AcidFluid` class, and add these methods:
+
+@[code transcludeWith=:::3](@/reference/latest/src/main/java/com/example/docs/fluid/custom/AcidFluid.java)
+
+The fluid now has registered the source and the flowing fluid. We just need a bucket to complete the acid fluid.
