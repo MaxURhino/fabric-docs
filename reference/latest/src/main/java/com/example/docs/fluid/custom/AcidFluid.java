@@ -126,7 +126,7 @@ public abstract class AcidFluid extends FlowingFluid {
 		// :::1
 		@Override
 		public boolean isSame(Fluid fluid) {
-				return false;
+				return fluid == ModFluids.ACID_STILL || fluid == ModFluids.ACID_FLOWING;
 		}
 
 		@Override
