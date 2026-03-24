@@ -8,6 +8,7 @@ import net.minecraft.world.level.material.FlowingFluid;
 import com.example.docs.ExampleMod;
 import com.example.docs.fluid.custom.AcidFluid;
 
+// :::1
 public class ModFluids {
     public static final FlowingFluid ACID_FLOWING = register("acid_flow", new AcidFluid.Flowing());
     public static final FlowingFluid ACID_STILL = register("acid", new AcidFluid.Source());
@@ -18,3 +19,4 @@ public class ModFluids {
 
 		public static void initialize() {}
 }
+// :::1
