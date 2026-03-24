@@ -1,13 +1,29 @@
 ---
-title: Creating a fluid
+title: Creating Your First Fluid
 description: Learn, how to create your own, custom fluid.
 authors:
-  - Maksiuhrino
+  - AlexiyOrlov
+  - CelDaemon
+  - Clomclem
+  - comp500
+  - Daomephsta
+  - Earthcomputer
+  - florensie
+  - Fusion-Flux
+  - InfinityChances
+  - MaxURhino
+  - SolidBlock-cn
+  - SuperSoupr
+  - Virtuoel
+  - UpcraftLP
+authors-nogithub:
+  - alfiejfs
+  - salvopelux
 ---
 
 Here we'll cover creation of a custom fluid. If you plan to create several fluids, it is recommended to make an abstract basic fluid class where you'll set necessary defaults that will be shared in its subclasses. We'll also make it generate in the world like lakes.
 
-## Creating the fluid class {#creating-the-fluid-class}
+## Creating the Fluid Class {#creating-the-fluid-class}
 
 Vanilla fluids extend `net.minecraft.fluid.FlowableFluid`, and so shall we.
 For now, we will create an abstract class with all the methods for the source and the flowing fluid:
@@ -44,7 +60,7 @@ To add the texture for your fluid, add this line to your `ClientModInitializer`:
 
 In the next chapter, we will add effects for the fluid
 
-## Adding fluid effects {#adding-fluid-effects}
+## Adding Fluid Effects {#adding-fluid-effects}
 
 Let's start with creating a new fog environment:
 

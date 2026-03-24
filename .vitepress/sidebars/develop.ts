@@ -41,16 +41,6 @@ export default [
     ],
   },
   {
-    text: "develop.fluid",
-    collapsed: true,
-    items: [
-      {
-        text: "develop.fluid.creating_a_fluid",
-        link: "/develop/fluid/creating-a-fluid"
-      }
-    ]
-  },
-  {
     text: "develop.items",
     collapsed: true,
     items: [
@@ -143,6 +133,16 @@ export default [
       {
         text: "develop.blocks.transparency_and_tinting",
         link: "/develop/blocks/transparency-and-tinting",
+      },
+    ],
+  },
+  {
+    text: "develop.fluids",
+    collapsed: true,
+    items: [
+      {
+        text: "develop.fluids.first_fluid",
+        link: "/develop/fluids/first-fluid",
       },
     ],
   },
