@@ -70,29 +70,7 @@ Then you will need to apply it with a mixin:
 
 @[code transcludeWith=:::1](@/reference/latest/src/client/java/com/example/docs/mixin/client/FogRendererMixin.java)
 
-To cancel the default underwater overlay, create this mixin:
-
-@[code transcludeWith=:::1](@/reference/latest/src/client/java/com/example/docs/mixin/client/ScreenEffectRendererMixin.java)
-
-Of course, remember to add these mixins to the `example-mod.client.mixins.json` like this:
-
-```json
-{
-  "required": true,
-  "package": "com.example.docs.mixin.client",
-  "compatibilityLevel": "JAVA_17",
-  "client": [
-    "ExampleClientMixin",
-    "FogRendererMixin",
-    "GameRendererMixin",
-    "ScreenEffectRendererMixin",
-    "TitleScreenMixin"
-  ],
-  "injectors": {
-    "defaultRequire": 1
-  }
-}
-```
+Of course, remember to add the mixin to the `example-mod.client.mixins.json`.
 
 Now add the acid fluid to the water fluid tag, located in `data/minecraft/tags/fluid/water.json`:
 
