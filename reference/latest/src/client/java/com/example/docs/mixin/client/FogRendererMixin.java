@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import net.minecraft.client.renderer.fog.FogRenderer;
 import net.minecraft.client.renderer.fog.environment.FogEnvironment;
 
-import com.example.docs.fluid.fog.AcidFogEnvironment;
+import com.example.docs.fog.client.AcidFogEnvironment;
 
 // :::1
 @Mixin(FogRenderer.class)
