@@ -48,7 +48,8 @@ public class ExampleModAppearanceClient implements ClientModInitializer {
 						// Source texture
 						SimpleFluidRenderHandler.WATER_STILL,
 						// Flowing texture
-						SimpleFluidRenderHandler.WATER_FLOWING
+						SimpleFluidRenderHandler.WATER_FLOWING,
+						0xFF075800
 				)
 		);
 
