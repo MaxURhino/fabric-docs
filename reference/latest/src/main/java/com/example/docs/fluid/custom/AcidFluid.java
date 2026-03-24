@@ -33,6 +33,7 @@ import java.util.Optional;
 
 import com.example.docs.fluid.ModFluids;
 import com.example.docs.block.ModBlocks;
+import com.example.docs.item.ModItems;
 
 // :::1
 public abstract class AcidFluid extends FlowingFluid {
@@ -49,6 +50,12 @@ public abstract class AcidFluid extends FlowingFluid {
 				return ModFluids.ACID_STILL;
 		}
 		// :::3
+		// :::bucket
+		@Override
+		public Item getBucket() {
+				return ModItems.ACID_BUCKET;
+		}
+		// :::bucket
 		// :::1
 	 	@Override
     public void animateTick(Level world, BlockPos pos, FluidState state, RandomSource random) {
