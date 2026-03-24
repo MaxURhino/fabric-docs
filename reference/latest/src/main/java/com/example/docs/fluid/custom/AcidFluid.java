@@ -107,10 +107,12 @@ public abstract class AcidFluid extends FlowingFluid {
 				return 4;
 		}
 		// :::1
+		// :::4
 		@Override
 		protected BlockState createLegacyBlock(FluidState state) {
 				return ModBlocks.ACID.defaultBlockState();
 		}
+		// :::4
 		// :::1
 		@Override
 		public boolean isSame(Fluid fluid) {
