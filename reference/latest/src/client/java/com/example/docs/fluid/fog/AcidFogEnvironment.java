@@ -16,7 +16,7 @@ import net.minecraft.world.level.material.FogType;
 import org.jetbrains.annotations.Nullable;
 
 // :::1
-public class ModFogEnvironment extends FogEnvironment {
+public class AcidFogEnvironment extends FogEnvironment {
     @Override
     public void setupFog(FogData data, Camera camera, ClientLevel level, float renderDistance, DeltaTracker delta) {
         data.environmentalStart = -8.0F;
