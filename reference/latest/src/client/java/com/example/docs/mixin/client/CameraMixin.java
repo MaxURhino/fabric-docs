@@ -10,14 +10,14 @@ import net.minecraft.client.Camera;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.FogType;
 
-import com.example.docs.fluid.FluidTags;
+import com.example.docs.fluid.ModFluidTags;
 import com.example.docs.fog.ExampleModFogTypes;
 
 @Mixin(Camera.class)
 public class CameraMixin {
 	@Inject(method = "getFluidInCamera", at = @At(value = "INVOKE:FIRST", target = "Lnet/minecraft/world/level/material/FluidState;is(Lnet/minecraft/tags/TagKey;)Z"), cancellable = true)
 	private static void getAcidInCamera(CallbackInfoReturnable<FogType> cir, @Local FluidState fluidState) {
-		if (!fluidState.is(FluidTags.ACID)) {
+		if (!fluidState.is(ModFluidTags.ACID)) {
 			return;
 		}
 

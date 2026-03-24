@@ -7,7 +7,7 @@ import net.minecraft.core.HolderLookup;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 
-import com.example.docs.fluid.FluidTags;
+import com.example.docs.fluid.ModFluidTags;
 import com.example.docs.fluid.ModFluids;
 
 public class ExampleModFluidTagProvider extends FabricTagProvider.FluidTagProvider {
@@ -17,6 +17,6 @@ public class ExampleModFluidTagProvider extends FabricTagProvider.FluidTagProvid
 
 	@Override
 	protected void addTags(HolderLookup.Provider wrapperLookup) {
-		valueLookupBuilder(FluidTags.ACID).add(ModFluids.ACID_STILL, ModFluids.ACID_FLOWING);
+		valueLookupBuilder(ModFluidTags.ACID).add(ModFluids.ACID_STILL, ModFluids.ACID_FLOWING);
 	}
 }

@@ -12,7 +12,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -36,6 +35,7 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 
 import com.example.docs.block.ModBlocks;
+import com.example.docs.fluid.ModFluidTags;
 import com.example.docs.fluid.ModFluids;
 import com.example.docs.item.ModItems;
 
@@ -146,7 +146,7 @@ public abstract class AcidFluid extends FlowingFluid {
 	@Override
 	public boolean canBeReplacedWith(FluidState state, BlockGetter world, BlockPos pos, Fluid fluid,
 			Direction direction) {
-		return direction == Direction.DOWN && !fluid.is(FluidTags.WATER);
+		return direction == Direction.DOWN && !fluid.is(ModFluidTags.ACID);
 	}
 
 	@Override
