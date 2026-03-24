@@ -16,6 +16,7 @@ authors:
   - SuperSoupr
   - Virtuoel
   - UpcraftLP
+  - AlbanischeWurst
 authors-nogithub:
   - alfiejfs
   - salvopelux
@@ -80,3 +81,5 @@ Now add the acid fluid to the water fluid tag, located in `data/minecraft/tags/f
   "values": ["example-mod:acid", "example-mod:acid_flow"]
 }
 ```
+
+<sub><sup>Thank you AlbanischeWurst for the code.</sup></sub>
