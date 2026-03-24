@@ -82,4 +82,4 @@ Now add the acid fluid to the water fluid tag, located in `data/minecraft/tags/f
 }
 ```
 
-Thank you AlbanischeWurst for the code. ❤️
+<!-- Thank you AlbanischeWurst for the code. ❤️ -->
