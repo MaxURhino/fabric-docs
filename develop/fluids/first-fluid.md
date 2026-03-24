@@ -77,9 +77,6 @@ Now add the acid fluid to the water fluid tag, located in `data/minecraft/tags/f
 ```json
 {
   "replace": false,
-  "values": [
-    "example-mod:acid",
-    "example-mod:acid_flow"
-  ]
+  "values": ["example-mod:acid", "example-mod:acid_flow"]
 }
 ```
