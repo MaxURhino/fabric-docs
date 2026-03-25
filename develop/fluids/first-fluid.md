@@ -31,7 +31,7 @@ You must first understand how to [create a block](../blocks/first-block) and how
 
 :::
 
-This example will cover the creation of an acid fluid that hurts and weakens entities that stand inside of it.
+This example will cover the creation of an acid fluid that hurts and weakens entities that stand inside of it. To do this, we'll be covering the creation of two fluid instances for the source and fluid states, a liquid block, and a bucket item. A second article also covers the mixins needed to add your own fog type.
 
 ## Creating the Fluid Class {#creating-the-fluid-class}
 
@@ -67,7 +67,9 @@ Open your `ModBlocks` class and register this following `LiquidBlock`:
 
 ### Registering Buckets {#buckets}
 
-Now, let's add a Bucket of Acid. Switch to your `ModItems` class and register the following `BucketItem`. If you do not yet have a `ModItems` class, follow the docs for [Creating Your First Item](../items/first-item).
+Fluids in Minecraft usually go in buckets, so let's see how we can add an item for a Bucket of Acid. If you haven't done so yet, you should take a look at [how to create your first item](../items/first-item).
+
+Open your `ModItems` class and register this following `BucketItem`:
 
 @[code transcludeWith=:::acid_bucket](@/reference/latest/src/main/java/com/example/docs/item/ModItems.java)
 
@@ -80,58 +82,6 @@ Don't forget that items require a translation, [texture](../items/first-item#add
 <DownloadEntry visualURL="/assets/develop/fluids/acid_bucket.png" downloadURL="/assets/develop/fluids/acid_bucket_small.png">Texture</DownloadEntry>
 
 It's also recommended to add your mod's bucket to the `ConventionalItemTags.BUCKET` item tag so that other mods can handle it appropriately, either [manually](#tagging) or through [data generation](../data-generation/tags).
-
-### Transparency and Textures {#transparency-and-textures}
-
-To texture your fluid, you should use Fabric API's `FluidRenderHandlerRegistry`. We'll also use the `BlockRenderLayerMap` to set the `ChunkSectionLayer` to transparent, so you can see through the fluid. For more information, see the docs on [Transparency and Tinting](../blocks/transparency-and-tinting).
-
-::: tip
-
-For simplicity, this demo uses the water texture `Identifier`s provided by Fabric API, but you can replace those with an `Identifier` that points to your own texture in the format `minecraft:block/water_still`.
-
-:::
-
-Add the following lines to your `ClientModInitializer` to create a `SimpleFluidRenderHandler`, that takes in two `Identifier`s for the textures—one for the still source and one for the flowing fluid—and an integer for the color to tint it with.
-
-@[code transcludeWith=:::fluid_texture](@/reference/latest/src/client/java/com/example/docs/appearance/ExampleModAppearanceClient.java)
-
-At this point, we have all we need to see the Acid in-game! You can use `setblock` or the Acid Bucket item to place acid in the world.
-
-![A screenshot of a green acid fluid in the world](/assets/develop/fluids/acid.png)
-
-## Adding Fog {#adding-fog}
-
-Fluids like water and lava change the fog when a player is submerged in them. This section of the tutorial will cover implementing this behavior for your fluid.
-
-As there is not an API for registering fog environments, we'll need to use a mixin to add our mod's fog type to the `FogType` enum. Add the following mixin to your main mixin package and to the `example-mod.mixins.json`.
-
-@[code transcludeWith=:::renderer](@/reference/latest/src/main/java/com/example/docs/mixin/FogTypeInvoker.java)
-
-Now, we're able to create a class that will store our fog types.
-
-@[code transcludeWith=:::type](@/reference/latest/src/main/java/com/example/docs/fog/ExampleModFogTypes.java)
-
-### Fog Environments {#fog-environments}
-
-Let's start with creating a new fog environment. Fog environments are used to set where the fog should begin, where it should end, and what color the fog should be when fully submerged in our fluid. Create an `AcidFogEnvironment` class in your client package with the following methods:
-
-@[code transcludeWith=:::environment](@/reference/latest/src/client/java/com/example/docs/fog/client/AcidFogEnvironment.java)
-
-As there is not an API for registering fog environments, we'll need to use mixins into the two places where Minecraft's client is checking for fog types.
-
-First, we'll add our mod's fog environment to the `FogRenderer`. Add the following mixin to your client mixin package and to the `example-mod.client.mixins.json`.
-
-@[code transcludeWith=:::renderer](@/reference/latest/src/client/java/com/example/docs/mixin/client/FogRendererMixin.java)
-
-Next, we'll add our mod's fog environment to the `Camera`. Add the following mixin to your client mixin package and to the `example-mod.client.mixins.json`.
-
-@[code transcludeWith=:::renderer](@/reference/latest/src/client/java/com/example/docs/mixin/client/CameraMixin.java)
-
-Be sure that all three mixins are added to their mixin configs, otherwise they will not be loaded.
-
-Now, when we submerge ourselves in acid, the fog will change appropriately.
-
-![A screenshot of a thick acidic green fog](/assets/develop/fluids/fog.png)
 
 ## Tagging Your Fluids {#tagging}
 
@@ -152,8 +102,26 @@ Minecraft also provider other tags to control the behavior of fluids:
 - If you need your mod's fluid to behave like water (absorbed by sponges, swimmable...), considering adding it to the `minecraft:water` fluid tag
 - If you need it to behave like lava (swimmable by Striders/Ghasts, slows entities...), consider adding it to the `minecraft:lava` fluid tag
 
-If you only need *some* of those things, you may wish to use mixins to control the behavior finely.
+If you only need _some_ of those things, you may wish to use mixins to finely control the behavior.
 
 :::
 
-<!-- Thank you AlbanischeWurst for the code. ❤️ -->
+## Transparency and Textures {#transparency-and-textures}
+
+To texture your fluid, you should use Fabric API's `FluidRenderHandlerRegistry`. We'll also use the `BlockRenderLayerMap` to set the `ChunkSectionLayer` to transparent, so you can see through the fluid. For more information, see the docs on [Transparency and Tinting](../blocks/transparency-and-tinting).
+
+::: tip
+
+For simplicity, this demo uses the water texture `Identifier`s provided by Fabric API, but you can replace those with an `Identifier` that points to your own texture in the format `minecraft:block/water_still`.
+
+:::
+
+Add the following lines to your `ClientModInitializer` to create a `SimpleFluidRenderHandler`, that takes in two `Identifier`s for the textures—one for the still source and one for the flowing fluid—and an integer for the color to tint it with.
+
+@[code transcludeWith=:::fluid_texture](@/reference/latest/src/client/java/com/example/docs/appearance/ExampleModAppearanceClient.java)
+
+At this point, we have all we need to see the Acid in-game! You can use `setblock` or the Acid Bucket item to place acid in the world.
+
+![A screenshot of a green acid fluid in the world](/assets/develop/fluids/acid.png)
+
+If you submerge yourself in acid, you will notice that the fog does not render correctly yet. For this, read the following article on [Adding Fog to Your Fluid](./fluid-fog).
