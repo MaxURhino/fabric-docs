@@ -1,5 +1,3 @@
 {
-  "values": [
-    "example-mod:acid_bucket"
-  ]
+  "values": ["example-mod:acid_bucket"]
 }
