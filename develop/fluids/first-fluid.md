@@ -131,7 +131,6 @@ Now, when we submerge ourselves in acid, the fog will change appropriately.
 
 ![A screenshot of a thick acidic green fog](/assets/develop/fluids/fog.png)
 
-
 ## Tagging Your Fluids {#tagging}
 
 ::: info
