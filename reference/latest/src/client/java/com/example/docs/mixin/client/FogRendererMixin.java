@@ -11,7 +11,7 @@ import net.minecraft.client.renderer.fog.environment.FogEnvironment;
 
 import com.example.docs.fog.client.AcidFogEnvironment;
 
-// :::1
+// :::renderer
 @Mixin(FogRenderer.class)
 public class FogRendererMixin {
 	@Shadow
@@ -21,4 +21,4 @@ public class FogRendererMixin {
 		FOG_ENVIRONMENTS.addFirst(new AcidFogEnvironment());
 	}
 }
-// :::1
+// :::renderer

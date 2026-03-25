@@ -39,11 +39,11 @@ import com.example.docs.fluid.ModFluidTags;
 import com.example.docs.fluid.ModFluids;
 import com.example.docs.item.ModItems;
 
-// :::1
+// :::abstractFluid
 public abstract class AcidFluid extends FlowingFluid {
-	// :::1
+	// :::abstractFluid
 
-	// :::3
+	// :::sources
 	@Override
 	public Fluid getFlowing() {
 		return ModFluids.ACID_FLOWING;
@@ -54,7 +54,7 @@ public abstract class AcidFluid extends FlowingFluid {
 		return ModFluids.ACID_STILL;
 	}
 
-	// :::3
+	// :::sources
 	// :::bucket
 	@Override
 	public Item getBucket() {
@@ -62,7 +62,7 @@ public abstract class AcidFluid extends FlowingFluid {
 	}
 
 	// :::bucket
-	// :::1
+	// :::abstractFluid
 	@Override
 	public void animateTick(Level world, BlockPos pos, FluidState state, RandomSource random) {
 		if (!state.isSource() && !(Boolean) state.getValue(FALLING)) {
@@ -119,7 +119,7 @@ public abstract class AcidFluid extends FlowingFluid {
 		return 4;
 	}
 
-	// :::1
+	// :::abstractFluid
 	// :::4
 	@Override
 	protected BlockState createLegacyBlock(FluidState state) {
@@ -127,7 +127,7 @@ public abstract class AcidFluid extends FlowingFluid {
 	}
 
 	// :::4
-	// :::1
+	// :::abstractFluid
 	@Override
 	public boolean isSame(Fluid fluid) {
 		return fluid == ModFluids.ACID_STILL || fluid == ModFluids.ACID_FLOWING;
@@ -159,8 +159,8 @@ public abstract class AcidFluid extends FlowingFluid {
 		return Optional.of(SoundEvents.BUCKET_FILL);
 	}
 
-	// :::1
-	// :::2
+	// :::abstractFluid
+	// :::fluidSubclasses
 	public static class Flowing extends AcidFluid {
 		@Override
 		protected void createFluidStateDefinition(StateDefinition.Builder<Fluid, FluidState> builder) {
@@ -190,7 +190,7 @@ public abstract class AcidFluid extends FlowingFluid {
 			return true;
 		}
 	}
-	// :::2
-	// :::1
+	// :::fluidSubclasses
+	// :::abstractFluid
 }
-// :::1
+// :::abstractFluid

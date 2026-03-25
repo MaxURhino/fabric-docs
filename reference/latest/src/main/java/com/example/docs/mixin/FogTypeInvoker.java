@@ -5,6 +5,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 
 import net.minecraft.world.level.material.FogType;
 
+// :::renderer
 @Mixin(FogType.class)
 public interface FogTypeInvoker {
 	@Invoker("<init>")
@@ -12,3 +13,4 @@ public interface FogTypeInvoker {
 		return null;
 	}
 }
+// :::renderer

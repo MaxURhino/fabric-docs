@@ -39,13 +39,13 @@ import com.example.docs.fluid.ModFluids;
 public class ModBlocks {
 	// :::1
 
-	// :::7
+	// :::acid
 	public static final Block ACID = register(
 			"acid",
 			(props) -> new LiquidBlock(ModFluids.ACID_STILL, props),
 			BlockBehaviour.Properties.ofFullCopy(Blocks.WATER),
 			false);
-	// :::7
+	// :::acid
 
 	// :::2
 	public static final Block CONDENSED_DIRT = register(

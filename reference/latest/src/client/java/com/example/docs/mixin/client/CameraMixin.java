@@ -13,6 +13,7 @@ import net.minecraft.world.level.material.FogType;
 import com.example.docs.fluid.ModFluidTags;
 import com.example.docs.fog.ExampleModFogTypes;
 
+// :::renderer
 @Mixin(Camera.class)
 public class CameraMixin {
 	@Inject(method = "getFluidInCamera", at = @At(value = "INVOKE:FIRST", target = "Lnet/minecraft/world/level/material/FluidState;is(Lnet/minecraft/tags/TagKey;)Z"), cancellable = true)
@@ -24,3 +25,4 @@ public class CameraMixin {
 		cir.setReturnValue(ExampleModFogTypes.ACID);
 	}
 }
+// :::renderer

@@ -12,7 +12,7 @@ import net.minecraft.world.level.material.FogType;
 
 import com.example.docs.fog.ExampleModFogTypes;
 
-// :::1
+// :::environment
 public class AcidFogEnvironment extends FogEnvironment {
 	@Override
 	public void setupFog(FogData data, Camera camera, ClientLevel level, float renderDistance, DeltaTracker delta) {
@@ -30,4 +30,4 @@ public class AcidFogEnvironment extends FogEnvironment {
 		return 0x075800;
 	}
 }
-// :::1
+// :::environment
