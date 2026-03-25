@@ -27,15 +27,15 @@ authors-nogithub:
 
 ::: info PREREQUISITES
 
-You must first understand [how to create an block](../blocks/first-block) and [how to create an item](../items/first-item).
+You must first understand how to [create a block](../blocks/first-block) and how to [create an item](../items/first-item).
 
 :::
 
-This example will cover the creation of an Acid fluid that hurts and weakens entities that stand inside of it.
+This example will cover the creation of an acid fluid that hurts and weakens entities that stand inside of it.
 
 ## Creating the Fluid Class {#creating-the-fluid-class}
 
-The baseline class for fluids is the `FlowingFluid` class. We'll start by creating an abstract class, in this case `AcidFluid`, that extends `FlowingFluid`, overriding all the methods that will be shared by the source and the flowing fluid:
+We'll start by creating an abstract class, in this case called `AcidFluid`, that extends the baseline `FlowingFluid` class. Then, we'll override any the methods that should be the same for both the source and the flowing fluid:
 
 @[code transcludeWith=:::abstractFluid](@/reference/latest/src/main/java/com/example/docs/fluid/custom/AcidFluid.java)
 
@@ -45,7 +45,7 @@ Inside `AcidFluid`, we'll create two subclasses for the `Source` and `Flowing` f
 
 ### Registering Fluids {#registering-fluids}
 
-Next, you would need to create a class, called `ModFluids`, that would register all the fluid instances.
+Next, we'll create a class to register all the fluid instances. We'll call it `ModFluids`.
 
 @[code transcludeWith=:::register](@/reference/latest/src/main/java/com/example/docs/fluid/ModFluids.java)
 
@@ -57,17 +57,17 @@ Now, go back to the `AcidFluid` class, and add these methods to associate the re
 
 @[code transcludeWith=:::sources](@/reference/latest/src/main/java/com/example/docs/fluid/custom/AcidFluid.java)
 
-The fluid now has registered the source and the flowing fluid. We just need a bucket to complete the acid fluid, and a legacy block for it.
+So far, we've registered the fluid's source state and its flowing state. Next, we'll need to register a bucket and a `LiquidBlock` for it.
 
 ### Registering Fluid Blocks {#fluid-blocks}
 
-Now, let's add a legacy block for our fluid. These are used for some behaviour if your fluid needs to exist in the world - one example would be the `setblock` command. Switch to your `ModBlocks` class and create the following block. If you do not yet have a `ModBlocks` class, follow the docs for [Creating Your First Block](../blocks/first-block).
+Now, let's add a legacy block for our fluid. Legacy blocks are used for some behaviour in the world - one example would be the `setblock` command, so you'll need to define one for the fluid to exist in the world. Switch to your `ModBlocks` class and register the following `LiquidBlock`. If you do not yet have a `ModBlocks` class, follow the docs for [Creating Your First Block](../blocks/first-block).
 
 @[code transcludeWith=:::acid](@/reference/latest/src/main/java/com/example/docs/block/ModBlocks.java)
 
 ### Registering Buckets {#buckets}
 
-Now, let's add the bucket for acid. Switch to your `ModItems` class and create the following item. If you do not yet have a `ModItems` class, follow the docs for [Creating Your First Item](../items/first-item).
+Now, let's add a Bucket of Acid. Switch to your `ModItems` class and register the following `BucketItem`. If you do not yet have a `ModItems` class, follow the docs for [Creating Your First Item](../items/first-item).
 
 @[code transcludeWith=:::acid_bucket](@/reference/latest/src/main/java/com/example/docs/item/ModItems.java)
 
