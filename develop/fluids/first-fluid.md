@@ -27,7 +27,7 @@ authors-nogithub:
 
 ::: info PREREQUISITES
 
-You must first understand [how to create an block](./first-block) and [how to create an item](./first-item).
+You must first understand [how to create an block](../blocks/first-block) and [how to create an item](../items/first-item).
 
 :::
 
