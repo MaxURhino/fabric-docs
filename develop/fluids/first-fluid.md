@@ -31,7 +31,7 @@ You must first understand [how to create an block](../blocks/first-block) and [h
 
 :::
 
-This example will cover the creation of an Acid fluid that damages entities that stand inside of it.
+This example will cover the creation of an Acid fluid that hurts and weakens entities that stand inside of it.
 
 ## Creating the Fluid Class {#creating-the-fluid-class}
 
