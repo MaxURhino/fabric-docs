@@ -75,7 +75,7 @@ Then, override this method in `AcidFluid` to associate your bucket with the flui
 
 @[code transcludeWith=:::bucket](@/reference/latest/src/main/java/com/example/docs/fluid/custom/AcidFluid.java)
 
-Don't forget that items require a translation, [texture](../first-item#adding-a-texture), [model](../first-item#adding-a-model), and [client item]((../first-item#creating-the-client-item)) with the name `acid_bucket` in order to render correctly. An example texture is provided below.
+Don't forget that items require a translation, [texture](../first-item#adding-a-texture), [model](../first-item#adding-a-model), and [client item](<(../first-item#creating-the-client-item)>) with the name `acid_bucket` in order to render correctly. An example texture is provided below.
 
 <DownloadEntry visualURL="/assets/develop/fluids/acid_bucket.png" downloadURL="/assets/develop/fluids/acid_bucket_small.png">Texture</DownloadEntry>
 
