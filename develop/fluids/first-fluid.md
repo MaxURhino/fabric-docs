@@ -65,7 +65,7 @@ In the next chapter, we will add effects for the fluid
 
 Let's start with creating a new fog environment:
 
-@[code transcludeWith=:::1](@/reference/latest/src/client/java/com/example/docs/fluid/fog/ModFogEnvironment.java)
+@[code transcludeWith=:::1](@/reference/latest/src/client/java/com/example/docs/fluid/fog/AcidFogEnvironment.java)
 
 Then you will need to apply it with a mixin:
 
