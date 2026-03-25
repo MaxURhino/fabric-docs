@@ -83,7 +83,7 @@ It's also recommended to add your mod's bucket to the `ConventionalItemTags.BUCK
 
 ### Transparency and Textures {#transparency-and-textures}
 
-To add the texture for your fluid, you can use Fabric API's `FluidRenderHandlerRegistry`. Add the following lines to your `ClientModInitializer` to create a `SimpleFluidRenderHandler` that takes in two `Identifier`s for the still and flowing textures and an integer to tint it with.
+To texture your fluid, you should use Fabric API's `FluidRenderHandlerRegistry`. Add the following lines to your `ClientModInitializer` to create a `SimpleFluidRenderHandler` that takes in two `Identifier`s for the still and flowing textures and an integer to tint it with.
 
 For simplicity, this demo uses the water texture `Identifier`s provided by Fabric API, but you can replace those with an `Identifier` that points to your own texture in the format `minecraft:block/water_still`.
 
@@ -99,9 +99,9 @@ In the next chapter, we will add a fog effect when submerged in the fluid.
 
 ## Adding Fog {#adding-fog}
 
-Fluids like water and lava change the fog when a player is submerged in them. This section of the tutorial will cover how to implement that for your fluid.
+Fluids like water and lava change the fog when a player is submerged in them. This section of the tutorial will cover implementing this behavior for your fluid.
 
-As there is not an API for registering fog environments, we'll need to use a mixin to add our mod's fog type to the `FogType` enum. Add the following mixin to your main mixin package and to the `example-mod.mixins.json` mixin config.
+As there is not an API for registering fog environments, we'll need to use a mixin to add our mod's fog type to the `FogType` enum. Add the following mixin to your main mixin package and to the `example-mod.mixins.json`.
 
 @[code transcludeWith=:::renderer](@/reference/latest/src/main/java/com/example/docs/mixin/FogTypeInvoker.java)
 
@@ -111,17 +111,17 @@ Now, we're able to create a class that will store our fog types.
 
 ### Fog Environments {#fog-environments}
 
-Let's start with creating a new fog environment. Fog environments are used to set where the fog should begin, where it should end, and what colour the fog should be when fully submerged in our fluid. Create an `AcidFogEnvironment` class in your client package with the following methods:
+Let's start with creating a new fog environment. Fog environments are used to set where the fog should begin, where it should end, and what color the fog should be when fully submerged in our fluid. Create an `AcidFogEnvironment` class in your client package with the following methods:
 
 @[code transcludeWith=:::environment](@/reference/latest/src/client/java/com/example/docs/fog/client/AcidFogEnvironment.java)
 
-As there is not an API for registering fog environments, we'll need to use mixins to the two places where Minecraft's client is checking for fog types.
+As there is not an API for registering fog environments, we'll need to use mixins into the two places where Minecraft's client is checking for fog types.
 
-First, we'll add our mod's fog environment to the `FogRenderer`. Add the following mixin to your client mixin package and to the `example-mod.client.mixins.json` mixin config.
+First, we'll add our mod's fog environment to the `FogRenderer`. Add the following mixin to your client mixin package and to the `example-mod.client.mixins.json`.
 
 @[code transcludeWith=:::renderer](@/reference/latest/src/client/java/com/example/docs/mixin/client/FogRendererMixin.java)
 
-First, we'll add our mod's fog environment to the `Camera`. Add the following mixin to your client mixin package and to the `example-mod.client.mixins.json` mixin config.
+Next, we'll add our mod's fog environment to the `Camera`. Add the following mixin to your client mixin package and to the `example-mod.client.mixins.json`.
 
 @[code transcludeWith=:::renderer](@/reference/latest/src/client/java/com/example/docs/mixin/client/CameraMixin.java)
 
