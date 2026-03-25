@@ -61,7 +61,7 @@ The fluid now has registered the source and the flowing fluid. We just need a bu
 
 ### Registering Fluid Blocks {#fluid-blocks}
 
-Let's start with the legacy block. Switch to your `ModBlocks` class and create the following block. If you do not yet have a `ModBlocks` class, follow the docs for [Creating Your First Block](../blocks/first-block).
+Now, let's add a legacy block for our fluid. These are used for some behaviour if your fluid needs to exist in the world - one example would be the `setblock` command. Switch to your `ModBlocks` class and create the following block. If you do not yet have a `ModBlocks` class, follow the docs for [Creating Your First Block](../blocks/first-block).
 
 @[code transcludeWith=:::acid](@/reference/latest/src/main/java/com/example/docs/block/ModBlocks.java)
 
@@ -75,6 +75,12 @@ Then, override this method in `AcidFluid` to associate your bucket with the flui
 
 @[code transcludeWith=:::bucket](@/reference/latest/src/main/java/com/example/docs/fluid/custom/AcidFluid.java)
 
+Don't forget that items require a translation, [texture](../first-item#adding-a-texture), [model](../first-item#adding-a-model), and [client item]((../first-item#creating-the-client-item)) with the name `acid_bucket` in order to render correctly. An example texture is provided below.
+
+<DownloadEntry visualURL="/assets/develop/fluids/acid_bucket.png" downloadURL="/assets/develop/fluids/acid_bucket_small.png">Texture</DownloadEntry>
+
+It's also recommended to add your mod's bucket to the `ConventionalItemTags.BUCKET` item tag so that other mods can handle it appropriately, either manually or through [data generation](../data-generation/tags).
+
 ### Transparency and Textures {#transparency-and-textures}
 
 To add the texture for your fluid, you can use Fabric API's `FluidRenderHandlerRegistry`. Add the following lines to your `ClientModInitializer` to create a `SimpleFluidRenderHandler` that takes in two `Identifier`s for the still and flowing textures and an integer to tint it with.
@@ -85,9 +91,15 @@ We'll also use the `BlockRenderLayerMap` to set the `ChunkSectionLayer` to trans
 
 @[code transcludeWith=:::fluid_texture](@/reference/latest/src/client/java/com/example/docs/appearance/ExampleModAppearanceClient.java)
 
-In the next chapter, we will add effects for the fluid.
+At this point, we have all we need to see the Acid ingame! You can use `setblock` or the Acid Bucket item to place acid in the world.
+
+![A screenshot of a green acid fluid in the world](/assets/develop/fluids/acid.png)
+
+In the next chapter, we will add a fog effect when submerged in the fluid.
 
 ## Adding Fog {#adding-fog}
+
+Fluids like water and lava change the fog when a player is submerged in them. This section of the tutorial will cover how to implement that for your fluid.
 
 As there is not an API for registering fog environments, we'll need to use a mixin to add our mod's fog type to the `FogType` enum. Add the following mixin to your main mixin package and to the `example-mod.mixins.json` mixin config.
 
@@ -115,6 +127,11 @@ First, we'll add our mod's fog environment to the `Camera`. Add the following mi
 
 Be sure that all three mixins are added to their mixin configs, otherwise they will not be loaded.
 
+Now, when we submerge ourselves in acid, the fog will change appropriately.
+
+![A screenshot of a thick acidic green fog](/assets/develop/fluids/fog.png)
+
+
 ## Tagging Your Fluids {#tagging}
 
 ::: info
@@ -125,12 +142,7 @@ Users of [data generation](../data-generation/tags) may wish to register tags vi
 
 As a fluid is considered two seperate blocks in its flowing and still states, tags are often used to check for fluids. We'll create a fluid tag in `data/example-mod/tags/fluid/acid.json` with the following contents:
 
-```json
-{
-  "replace": false,
-  "values": ["example-mod:acid", "example-mod:flowing_acid"]
-}
-```
+@[code transclude](@/reference/latest/src/main/generated/data/example-mod/tags/fluid/acid.json)
 
 Minecraft also uses fluid tags for behaviour. If you need your mod's fluid to behave like water (absorbed by sponges, swimmable, etc.), considering adding it to the `minecraft:water` fluid tag, and if you need it to behave like lava (swimmable by Striders/Ghasts, slows entities, etc.), consider adding it to the `minecraft:lava` tag. Note that if you only need a few things, you may wish to use mixins to change that behaviour yourself.
 
