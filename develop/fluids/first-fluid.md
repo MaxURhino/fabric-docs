@@ -13,6 +13,7 @@ authors:
   - florensie
   - Fusion-Flux
   - InfinityChances
+  - Kilip1000
   - MaxURhino
   - SolidBlock-cn
   - SuperSoupr
