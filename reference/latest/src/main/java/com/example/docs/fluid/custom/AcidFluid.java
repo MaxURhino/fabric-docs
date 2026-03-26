@@ -111,6 +111,7 @@ public abstract class AcidFluid extends FlowingFluid {
 			// Hurt and weaken entities that step inside.
 			livingEntity.hurtServer(serverLevel, world.damageSources().magic(), 2.0F); // 1 heart/sec
 			livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 300, -3));
+			livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 300, -3));
 		}
 	}
 

@@ -3,6 +3,7 @@ package com.example.docs.datagen;
 import java.util.concurrent.CompletableFuture;
 
 import net.minecraft.core.HolderLookup;
+import net.minecraft.tags.FluidTags;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -18,5 +19,6 @@ public class ExampleModFluidTagProvider extends FabricTagProvider.FluidTagProvid
 	@Override
 	protected void addTags(HolderLookup.Provider wrapperLookup) {
 		valueLookupBuilder(ModFluidTags.ACID).add(ModFluids.ACID_STILL, ModFluids.ACID_FLOWING);
+		valueLookupBuilder(FluidTags.WATER).addTag(ModFluidTags.ACID);
 	}
 }

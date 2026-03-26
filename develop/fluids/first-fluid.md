@@ -100,11 +100,13 @@ Because a fluid is considered two separate blocks in its flowing and still state
 
 Minecraft also provider other tags to control the behavior of fluids:
 
-- If you need your mod's fluid to behave like water (absorbed by sponges, swimmable...), considering adding it to the `minecraft:water` fluid tag
-- If you need it to behave like lava (swimmable by Striders/Ghasts, slows entities...), consider adding it to the `minecraft:lava` fluid tag
+- If you need your mod's fluid to behave like water (water fog, absorbed by sponges, swimmable, slows entities...), considering adding it to the `minecraft:water` fluid tag
+- If you need it to behave like lava (lava fog, swimmable by Striders/Ghasts, slows entities...), consider adding it to the `minecraft:lava` fluid tag
 - If you only need _some_ of those things, you may wish to use mixins to finely control the behavior.
 
 :::
+
+For this demo, we'll also add the acid fluid tag to the water fluid tag.
 
 ## Transparency and Textures {#transparency-and-textures}
 
