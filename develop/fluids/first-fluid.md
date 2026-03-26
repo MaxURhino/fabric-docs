@@ -2,6 +2,7 @@
 title: Creating Your First Fluid
 description: Learn how to create your first custom fluid in Minecraft.
 authors:
+  - AlbanischeWurst
   - AlexiyOrlov
   - cassiancc
   - CelDaemon
@@ -17,7 +18,6 @@ authors:
   - SuperSoupr
   - Virtuoel
   - UpcraftLP
-  - AlbanischeWurst
 authors-nogithub:
   - alfiejfs
   - salvopelux
@@ -31,7 +31,7 @@ You must first understand how to [create a block](../blocks/first-block) and how
 
 :::
 
-This example will cover the creation of an acid fluid that hurts and weakens entities that stand inside of it. To do this, we'll be covering the creation of two fluid instances for the source and fluid states, a liquid block, and a bucket item. A second article also covers the mixins needed to add your own fog type.
+This example will cover the creation of an acid fluid that hurts and weakens entities that stand inside of it. To do this, we'll need two fluid instances for the source and fluid states, a liquid block, and a bucket item.
 
 ## Creating the Fluid Class {#creating-the-fluid-class}
 
@@ -93,7 +93,7 @@ Users of [data generation](../data-generation/tags) may wish to register tags vi
 
 Because a fluid is considered two separate blocks in its flowing and still states, a tag is often used to check for both states together. We'll create a fluid tag in `data/example-mod/tags/fluid/acid.json`:
 
-@[code transclude](@/reference/latest/src/main/generated/data/example-mod/tags/fluid/acid.json)
+<<< @/reference/latest/src/main/generated/data/example-mod/tags/fluid/acid.json
 
 ::: tip
 
@@ -101,8 +101,7 @@ Minecraft also provider other tags to control the behavior of fluids:
 
 - If you need your mod's fluid to behave like water (absorbed by sponges, swimmable...), considering adding it to the `minecraft:water` fluid tag
 - If you need it to behave like lava (swimmable by Striders/Ghasts, slows entities...), consider adding it to the `minecraft:lava` fluid tag
-
-If you only need _some_ of those things, you may wish to use mixins to finely control the behavior.
+- If you only need _some_ of those things, you may wish to use mixins to finely control the behavior.
 
 :::
 
@@ -123,5 +122,3 @@ Add the following lines to your `ClientModInitializer` to create a `SimpleFluidR
 At this point, we have all we need to see the Acid in-game! You can use `setblock` or the Acid Bucket item to place acid in the world.
 
 ![A screenshot of a green acid fluid in the world](/assets/develop/fluids/acid.png)
-
-If you submerge yourself in acid, you will notice that the fog does not render correctly yet. For this, read the following article on [Adding Fog to Your Fluid](./fluid-fog).

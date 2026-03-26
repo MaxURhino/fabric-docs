@@ -144,10 +144,6 @@ export default [
         text: "develop.fluids.first_fluid",
         link: "/develop/fluids/first-fluid",
       },
-      {
-        text: "develop.fluids.fluid_fog",
-        link: "/develop/fluids/fluid-fog",
-      },
     ],
   },
   {

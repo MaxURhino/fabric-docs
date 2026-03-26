@@ -105,12 +105,12 @@ public abstract class AcidFluid extends FlowingFluid {
 	protected void entityInside(Level world, BlockPos pos, Entity entity, InsideBlockEffectApplier handler) {
 		handler.apply(InsideBlockEffectType.EXTINGUISH);
 
-		if (world instanceof ServerLevel serverLevel && entity instanceof LivingEntity livingEntity) {
-			if (world.getGameTime() % 20 == 0) {
-				// Hurt and weaken entities that step inside.
-				livingEntity.hurtServer(serverLevel, world.damageSources().magic(), 2.0F); // 1 heart/sec
-				livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 300, -3));
-			}
+		if (!(world instanceof ServerLevel serverLevel) || !(entity instanceof LivingEntity livingEntity)) return;
+
+		if (world.getGameTime() % 20 == 0) {
+			// Hurt and weaken entities that step inside.
+			livingEntity.hurtServer(serverLevel, world.damageSources().magic(), 2.0F); // 1 heart/sec
+			livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 300, -3));
 		}
 	}
 
