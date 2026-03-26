@@ -59,7 +59,8 @@ public class ModItems {
 			5.0F,
 			1.5F,
 			22,
-			GuiditeArmorMaterial.REPAIRS_GUIDITE_ARMOR);
+			GuiditeArmorMaterial.REPAIRS_GUIDITE_ARMOR
+	);
 	// :::guidite_tool_material
 
 	// :::6
@@ -67,30 +68,35 @@ public class ModItems {
 			"guidite_helmet",
 			Item::new,
 			new Item.Properties().humanoidArmor(GuiditeArmorMaterial.INSTANCE, ArmorType.HELMET)
-					.durability(ArmorType.HELMET.getDurability(GuiditeArmorMaterial.BASE_DURABILITY)));
+					.durability(ArmorType.HELMET.getDurability(GuiditeArmorMaterial.BASE_DURABILITY))
+	);
 	public static final Item GUIDITE_CHESTPLATE = register("guidite_chestplate",
 			Item::new,
 			new Item.Properties().humanoidArmor(GuiditeArmorMaterial.INSTANCE, ArmorType.CHESTPLATE)
-					.durability(ArmorType.CHESTPLATE.getDurability(GuiditeArmorMaterial.BASE_DURABILITY)));
+					.durability(ArmorType.CHESTPLATE.getDurability(GuiditeArmorMaterial.BASE_DURABILITY))
+	);
 
 	public static final Item GUIDITE_LEGGINGS = register(
 			"guidite_leggings",
 			Item::new,
 			new Item.Properties().humanoidArmor(GuiditeArmorMaterial.INSTANCE, ArmorType.LEGGINGS)
-					.durability(ArmorType.LEGGINGS.getDurability(GuiditeArmorMaterial.BASE_DURABILITY)));
+					.durability(ArmorType.LEGGINGS.getDurability(GuiditeArmorMaterial.BASE_DURABILITY))
+	);
 
 	public static final Item GUIDITE_BOOTS = register(
 			"guidite_boots",
 			Item::new,
 			new Item.Properties().humanoidArmor(GuiditeArmorMaterial.INSTANCE, ArmorType.BOOTS)
-					.durability(ArmorType.BOOTS.getDurability(GuiditeArmorMaterial.BASE_DURABILITY)));
+					.durability(ArmorType.BOOTS.getDurability(GuiditeArmorMaterial.BASE_DURABILITY))
+	);
 	// :::6
 	public static final Item LIGHTNING_STICK = register("lightning_stick", LightningStick::new, new Item.Properties());
 	// :::7
 	public static final Item GUIDITE_SWORD = register(
 			"guidite_sword",
 			Item::new,
-			new Item.Properties().sword(GUIDITE_TOOL_MATERIAL, 1f, 1f));
+			new Item.Properties().sword(GUIDITE_TOOL_MATERIAL, 1f, 1f)
+	);
 	// :::7
 	// :::_13
 	public static final Item COUNTER = register(
@@ -98,11 +104,13 @@ public class ModItems {
 			CounterItem::new,
 			new Item.Properties()
 					// Initialize the click count component with a default value of 0
-					.component(ModComponents.CLICK_COUNT_COMPONENT, 0));
+					.component(ModComponents.CLICK_COUNT_COMPONENT, 0)
+	);
 	// :::_13
 	// :::9
 	public static final ResourceKey<CreativeModeTab> CUSTOM_CREATIVE_TAB_KEY = ResourceKey.create(
-			BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(ExampleMod.MOD_ID, "creative_tab"));
+			BuiltInRegistries.CREATIVE_MODE_TAB.key(), Identifier.fromNamespaceAndPath(ExampleMod.MOD_ID, "creative_tab")
+	);
 	public static final CreativeModeTab CUSTOM_CREATIVE_TAB = FabricItemGroup.builder()
 			.icon(() -> new ItemStack(ModItems.GUIDITE_SWORD))
 			.title(Component.translatable("itemGroup.example-mod"))
@@ -155,7 +163,8 @@ public class ModItems {
 	public static final Item POISONOUS_APPLE = register(
 			"poisonous_apple",
 			Item::new,
-			new Item.Properties().food(POISON_FOOD_COMPONENT, POISON_FOOD_CONSUMABLE_COMPONENT));
+			new Item.Properties().food(POISON_FOOD_COMPONENT, POISON_FOOD_CONSUMABLE_COMPONENT)
+	);
 	// :::poisonous_apple
 
 	// :::2
@@ -166,13 +175,15 @@ public class ModItems {
 	public static final Item MINI_GOLEM_SPAWN_EGG = register(
 			"mini_golem_spawn_egg",
 			SpawnEggItem::new,
-			new Item.Properties().spawnEgg(ModEntityTypes.MINI_GOLEM));
+			new Item.Properties().spawnEgg(ModEntityTypes.MINI_GOLEM)
+	);
 	// :::custom_entity_spawn_egg
 
 	public static final Item RUBY = register("ruby", Item::new, new Item.Properties());
 
 	public static final Item GUIDITE_AXE = register("guidite_axe",
-			settings -> new AxeItem(GUIDITE_TOOL_MATERIAL, 5.0F, -3.0F, settings), new Item.Properties());
+			settings -> new AxeItem(GUIDITE_TOOL_MATERIAL, 5.0F, -3.0F, settings), new Item.Properties()
+	);
 
 	public static final Item LEATHER_GLOVES = register("leather_gloves", Item::new, new Item.Properties());
 
@@ -187,18 +198,17 @@ public class ModItems {
 	public static final Item BALLOON = register("balloon", Item::new, new Item.Properties());
 
 	public static final Item ENHANCED_HOE = register("enhanced_hoe",
-			settings -> new HoeItem(GUIDITE_TOOL_MATERIAL, -4.0F, 0.0F, settings), new Item.Properties());
+			settings -> new HoeItem(GUIDITE_TOOL_MATERIAL, -4.0F, 0.0F, settings), new Item.Properties()
+	);
 
 	public static final Item DIMENSIONAL_CRYSTAL = register("dimensional_crystal", Item::new, new Item.Properties());
 
 	public static final Item THROWING_KNIVES = register("throwing_knives", Item::new, new Item.Properties().stacksTo(3));
 
 	// :::1
-	public static <T extends Item> T register(String name, Function<Item.Properties, T> itemFactory,
-			Item.Properties settings) {
+	public static <T extends Item> T register(String name, Function<Item.Properties, T> itemFactory, Item.Properties settings) {
 		// Create the item key.
-		ResourceKey<Item> itemKey = ResourceKey.create(Registries.ITEM,
-				Identifier.fromNamespaceAndPath(ExampleMod.MOD_ID, name));
+		ResourceKey<Item> itemKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(ExampleMod.MOD_ID, name));
 
 		// Create the item instance.
 		T item = itemFactory.apply(settings.setId(itemKey));
@@ -216,8 +226,7 @@ public class ModItems {
 		// :::3
 		// :::4
 		// Get the event for modifying entries in the ingredients group.
-		// And register an event handler that adds our suspicious item to the
-		// ingredients group.
+		// And register an event handler that adds our suspicious item to the ingredients group.
 		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS)
 				.register((itemGroup) -> itemGroup.accept(ModItems.SUSPICIOUS_SUBSTANCE));
 		// :::4
