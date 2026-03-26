@@ -54,6 +54,11 @@ public abstract class AcidFluid extends FlowingFluid {
 		return ModFluids.ACID_STILL;
 	}
 
+	@Override
+	public boolean isSame(Fluid fluid) {
+		return fluid == ModFluids.ACID_STILL || fluid == ModFluids.ACID_FLOWING;
+	}
+
 	// :::sources
 	// :::bucket
 	@Override
@@ -121,19 +126,13 @@ public abstract class AcidFluid extends FlowingFluid {
 	}
 
 	// :::abstractFluid
-	// :::4
+	// :::legacyBlock
 	@Override
 	protected BlockState createLegacyBlock(FluidState state) {
 		return ModBlocks.ACID.defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(state));
 	}
-
-	// :::4
+	// :::legacyBlock
 	// :::abstractFluid
-	@Override
-	public boolean isSame(Fluid fluid) {
-		return fluid == ModFluids.ACID_STILL || fluid == ModFluids.ACID_FLOWING;
-	}
-
 	@Override
 	public int getDropOff(LevelReader world) {
 		return 1;
@@ -159,7 +158,6 @@ public abstract class AcidFluid extends FlowingFluid {
 	public Optional<SoundEvent> getPickupSound() {
 		return Optional.of(SoundEvents.BUCKET_FILL);
 	}
-
 	// :::abstractFluid
 	// :::fluidSubclasses
 	public static class Flowing extends AcidFluid {

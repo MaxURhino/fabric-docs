@@ -32,11 +32,19 @@ You must first understand how to [create a block](../blocks/first-block) and how
 
 :::
 
-This example will cover the creation of an acid fluid that hurts and weakens entities that stand inside of it. To do this, we'll need two fluid instances for the source and fluid states, a liquid block, and a bucket item.
+This example will cover the creation of an acid fluid that hurts, weakens, and blinds entities that stand inside of it. To do this, we'll need two fluid instances for the source and fluid states, a liquid block, a bucket item, and a fluid tag.
 
 ## Creating the Fluid Class {#creating-the-fluid-class}
 
-We'll start by creating an abstract class, in this case called `AcidFluid`, that extends the baseline `FlowingFluid` class. Then, we'll override any the methods that should be the same for both the source and the flowing fluid:
+We'll start by creating an abstract class, in this case called `AcidFluid`, that extends the baseline `FlowingFluid` class. Then, we'll override any the methods that should be the same for both the source and the flowing fluid.
+
+Pay special attention to the following methods:
+
+- `animateTick` is used for displaying particles and sound. The behaviour shown below is based on water, which plays sound when it flows and has underwater bubbling particles.
+- `entityInside` is used to handle what should happen when an entity touches the fluid. We'll base it off water and extinguish any fire on entities, but also make it hurt, weaken, and blind entities inside - it is acid after all.
+- `canBeReplacedWith` handles some flowing logic - note that `ModFluidTags.ACID` is not yet defined, we'll handle that at the end.
+
+Putting this all together, we end up with the following class:
 
 @[code transcludeWith=:::abstractFluid](@/reference/latest/src/main/java/com/example/docs/fluid/custom/AcidFluid.java)
 
@@ -65,6 +73,10 @@ Let's now add a liquid block for our fluid. This is needed by some commands like
 Open your `ModBlocks` class and register this following `LiquidBlock`:
 
 @[code transcludeWith=:::acid](@/reference/latest/src/main/java/com/example/docs/block/ModBlocks.java)
+
+Then, override this method in `AcidFluid` to associate your block with the fluid:
+
+@[code transcludeWith=:::legacyBlock](@/reference/latest/src/main/java/com/example/docs/fluid/custom/AcidFluid.java)
 
 ### Registering Buckets {#buckets}
 
@@ -100,13 +112,15 @@ Because a fluid is considered two separate blocks in its flowing and still state
 
 Minecraft also provider other tags to control the behavior of fluids:
 
-- If you need your mod's fluid to behave like water (water fog, absorbed by sponges, swimmable, slows entities...), considering adding it to the `minecraft:water` fluid tag
-- If you need it to behave like lava (lava fog, swimmable by Striders/Ghasts, slows entities...), consider adding it to the `minecraft:lava` fluid tag
+- If you need your mod's fluid to behave like water (water fog, absorbed by sponges, swimmable, slows entities...), considering adding it to the `minecraft:water` fluid tag.
+- If you need it to behave like lava (lava fog, swimmable by Striders/Ghasts, slows entities...), consider adding it to the `minecraft:lava` fluid tag.
 - If you only need _some_ of those things, you may wish to use mixins to finely control the behavior.
 
 :::
 
-For this demo, we'll also add the acid fluid tag to the water fluid tag.
+For this demo, we'll also add the acid fluid tag to the water fluid tag, `data/minecraft/tags/fluid/water.json`.
+
+<<< @/reference/latest/src/main/generated/data/minecraft/tags/fluid/water.json
 
 ## Transparency and Textures {#transparency-and-textures}
 
