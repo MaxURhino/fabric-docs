@@ -52,8 +52,9 @@ public class ExampleModAppearanceClient implements ClientModInitializer {
 						0x075800
 				)
 		);
-
-		BlockRenderLayerMap.putBlock(ModBlocks.ACID, ChunkSectionLayer.TRANSLUCENT);
 		// :::fluid_texture
+		// :::fluid_transparency
+		BlockRenderLayerMap.putBlock(ModBlocks.ACID, ChunkSectionLayer.TRANSLUCENT);
+		// :::fluid_transparency
 	}
 }
