@@ -121,8 +121,7 @@ public class ModBlocks {
 			"ruby_door", settings -> new DoorBlock(BlockSetType.STONE, settings), BlockBehaviour.Properties.of(), true
 	);
 	public static final Block RUBY_TRAPDOOR = register(
-			"ruby_trapdoor", settings -> new TrapDoorBlock(BlockSetType.STONE, settings), BlockBehaviour.Properties.of(),
-			true
+			"ruby_trapdoor", settings -> new TrapDoorBlock(BlockSetType.STONE, settings), BlockBehaviour.Properties.of(), true
 	);
 
 	public static final Block VERTICAL_OAK_LOG_SLAB = register(
@@ -130,7 +129,8 @@ public class ModBlocks {
 	);
 
 	// :::family-declaration
-	public static final BlockFamily RUBY_FAMILY = new BlockFamily.Builder(ModBlocks.RUBY_BLOCK)
+	public static final BlockFamily RUBY_FAMILY =
+			new BlockFamily.Builder(ModBlocks.RUBY_BLOCK)
 			.stairs(ModBlocks.RUBY_STAIRS)
 			.slab(ModBlocks.RUBY_SLAB)
 			.fence(ModBlocks.RUBY_FENCE)

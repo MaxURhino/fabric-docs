@@ -181,9 +181,7 @@ public class ModItems {
 
 	public static final Item RUBY = register("ruby", Item::new, new Item.Properties());
 
-	public static final Item GUIDITE_AXE = register("guidite_axe",
-			settings -> new AxeItem(GUIDITE_TOOL_MATERIAL, 5.0F, -3.0F, settings), new Item.Properties()
-	);
+	public static final Item GUIDITE_AXE = register("guidite_axe", settings -> new AxeItem(GUIDITE_TOOL_MATERIAL, 5.0F, -3.0F, settings), new Item.Properties());
 
 	public static final Item LEATHER_GLOVES = register("leather_gloves", Item::new, new Item.Properties());
 
@@ -197,9 +195,7 @@ public class ModItems {
 
 	public static final Item BALLOON = register("balloon", Item::new, new Item.Properties());
 
-	public static final Item ENHANCED_HOE = register("enhanced_hoe",
-			settings -> new HoeItem(GUIDITE_TOOL_MATERIAL, -4.0F, 0.0F, settings), new Item.Properties()
-	);
+	public static final Item ENHANCED_HOE = register("enhanced_hoe", settings -> new HoeItem(GUIDITE_TOOL_MATERIAL, -4.0F, 0.0F, settings), new Item.Properties());
 
 	public static final Item DIMENSIONAL_CRYSTAL = register("dimensional_crystal", Item::new, new Item.Properties());
 
