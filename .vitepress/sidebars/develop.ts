@@ -458,4 +458,27 @@ export default [
       },
     ],
   },
+  {
+    text: "develop.kotlin",
+    collapsed: true,
+    items: [
+      {
+        text: "develop.kotlin.setting_up",
+        link: "/develop/kotlin/setting_up"
+      },
+      {
+        text: "develop.items",
+        collapsed: true,
+        items: [
+          {
+            text: "develop.items.first_item",
+            link: "/develop/kotlin/items/first-item",
+            items: [
+              
+            ]
+          }
+        ]
+      }
+    ]
+  }
 ] satisfies Fabric.SidebarItem[];
